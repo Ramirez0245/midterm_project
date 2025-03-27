@@ -1,3 +1,4 @@
+Team: Omar Ramirez
 Steps to run
 
 1. Create .venv folder
