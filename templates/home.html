@@ -1,0 +1,55 @@
+<h1> Notes </h1>
+
+<body>
+    <h1>Login</h1>
+    <form name="myForm" id="myForm">
+        <input type="text" placeholder="username" name="username" id="'username" value="admin"> </input>
+        <input type="text" placeholder="password" name="password" id="password" value="password"> </input>
+        <button  >Submit  </button>
+    </form>
+</body>
+<script>
+    token = ''
+    function print_token() {
+        console.log(token)
+    }
+    document.getElementById('myForm').addEventListener('submit',
+        function(event) {
+            event.preventDefault()
+            var xhr = new XMLHttpRequest();
+            var url = "http://localhost:5000/login";
+        
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var json = JSON.parse(xhr.responseText);
+                    token = json
+                    console.log(token)
+                }
+            };
+            var data = JSON.stringify({"username": "admin", "password": "password"});
+            xhr.send(data);               
+        }
+    )
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 1000));
+        let expries 
+    }
+    function redirect_protected(token) {
+        console.log('START: redirected_protected')
+        url = "http://localhost:5000/protected"
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token['token'],
+            },
+        })
+        .then(response => {
+            console.log(response)
+            console.log(response['Location'])
+        })
+    }
+    </script>
