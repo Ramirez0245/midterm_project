@@ -1,7 +1,7 @@
 Team: Omar Ramirez
 Steps to run
 
-NOTE: You need to update your own CONNECTION_STRING, I am using MongoDB Atlas. Recommending using mongodb
+NOTE: You need to update your own CONNECTION_STRING in the .env file, I am using MongoDB Atlas. Recommending using mongodb
 
 1. Create .venv folder
 2. Install packages using requirments.txt file
